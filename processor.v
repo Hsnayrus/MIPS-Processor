@@ -96,13 +96,7 @@ module processor(
 	 wire [31:0] addressImem;
 	 wire[31:0] aluOutput;
 	 wire[15:0] immediate;
-	 wire is_rType, is_addi, is_sw, is_lw, is_ovf, isNotEqual, isLessThan, overflow, is_add, is_sub;
-	 
-	 assign Opcode    = q_imem[31:27];
-	 assign rd        = q_imem[26:22];
-	 assign rs        = is_bex ? 5'h11110 : q_imem[21:17];
-	 assign rt        = q_imem[16:12];
-	 assign immediate = q_imem[15:0];
+	 wire is_rType, is_addi, is_sw, is_lw, is_ovf, isNotEqual, isLessThan, overflow, is_add, is_sub, is_jiType, rstatus1;
 	 
 	 assign is_rType  = ~Opcode[4] && ~Opcode[3] && ~Opcode[2] && ~Opcode[1] && ~Opcode[0]; //00000
 	 assign is_addi   = ~Opcode[4] && ~Opcode[3] && Opcode[2]  && ~Opcode[1] && Opcode[0];  //00101
@@ -123,6 +117,15 @@ module processor(
 	 assign is_blt = ~Opcode[4] && ~Opcode[3] && Opcode[2]&& Opcode[1] && ~Opcode[0]; // 00110
 	 assign is_bex = Opcode[4] && ~Opcode[3] && Opcode[2]&& Opcode[1] && ~Opcode[0]; // 10110
 	 assign is_setx = Opcode[4] && ~Opcode[3] && Opcode[2]&& ~Opcode[1] && Opcode[0]; // 10101
+	 assign is_jiType = is_j || is_jal || is_bex;
+	 //rstatus != 0;
+	 assign rstatus1 = ~(data_readRegA == 1'd0);
+	 
+	 assign Opcode    = q_imem[31:27];
+	 assign rd        = is_jal ? 5'b11111 : q_imem[26:22];
+	 assign rs        = is_bex ? 5'b11110 : q_imem[21:17];
+	 assign rt        = q_imem[16:12];
+	 assign immediate = q_imem[15:0];
 	 
 	 wire imemClock, dmem_clock, register_clock;
 	 
@@ -134,7 +137,7 @@ module processor(
 	 
 	 //Old: assign address_imem = addressImem[11:0];
 	 //New
-	 assign address_imem = (is_j || is_jal || is_bex)? ((is_bex ? (data_readRegA ? address_imem[11:0] : q_imem[11:0])) : q_imem[11:0]) : addressImem[11:0];
+	 assign address_imem = is_jiType ? ((is_bex ? (rstatus1 ? address_imem[11:0] : q_imem[11:0])) : q_imem[11:0]) : addressImem[11:0];
 	 
 	 
 	
@@ -158,8 +161,8 @@ module processor(
 //assign ctrl_readRegB = (is_sw)  ? rd : rt;
 	
 	 assign ctrl_writeEnable  = is_sw  ? 1'b0 : 1'b1;
-	 
-	 assign data_writeReg     = (is_rType || is_addi) ? (overflow ? (is_add ? 32'h00000001 : (is_sub ? 32'h00000003 : (is_addi ? 32'h0000002 : aluOutput))) : aluOutput) : (is_sw ? (aluOutput): q_imem);
+	 //Should be q_dmem instead of q_imem
+	 assign data_writeReg     = (is_rType || is_addi) ? (overflow ? (is_add ? 1'd1 : (is_sub ? 1'd3 : (is_addi ? 1'd2 : aluOutput))) : aluOutput) : (is_sw ? (aluOutput): q_imem);
 	 
 	 assign dataOperandA      = data_readRegA;
 	 
