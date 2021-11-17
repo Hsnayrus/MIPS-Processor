@@ -100,7 +100,7 @@ module processor(
 	 
 	 assign Opcode    = q_imem[31:27];
 	 assign rd        = q_imem[26:22];
-	 assign rs        = q_imem[21:17];
+	 assign rs        = is_bex ? 5'h11110 : q_imem[21:17];
 	 assign rt        = q_imem[16:12];
 	 assign immediate = q_imem[15:0];
 	 
@@ -113,13 +113,32 @@ module processor(
 	 assign ALU_op    = is_rType? q_imem[6:2]  : 5'd0;   
 	 assign shamt     = is_rType? q_imem[11:7] : 5'd0; //might be wrong? test this
 	 
+	 
+	 //00001
+	 assign is_j = ~Opcode[4] && ~Opcode[3] && ~Opcode[2]&& ~Opcode[1] && Opcode[0];
+	 //00010
+	 assign is_bne = ~Opcode[4] && ~Opcode[3] && ~Opcode[2]&& Opcode[1] && ~Opcode[0];
+	 assign is_jal = ~Opcode[4] && ~Opcode[3] && ~Opcode[2]&& Opcode[1] && Opcode[0]; // 00011
+	 assign is_jr = ~Opcode[4] && ~Opcode[3] && Opcode[2]&& ~Opcode[1] && ~Opcode[0]; // 00100
+	 assign is_blt = ~Opcode[4] && ~Opcode[3] && Opcode[2]&& Opcode[1] && ~Opcode[0]; // 00110
+	 assign is_bex = Opcode[4] && ~Opcode[3] && Opcode[2]&& Opcode[1] && ~Opcode[0]; // 10110
+	 assign is_setx = Opcode[4] && ~Opcode[3] && Opcode[2]&& ~Opcode[1] && Opcode[0]; // 10101
+	 
 	 wire imemClock, dmem_clock, register_clock;
+	 
 	 
 	 freqBy2 f1(clock, 1'b1, imemClock);
 	 freqBy2 f2(imemClock, 1'b1, dmem_clock);
 	 
 	 pc pc1(q_imem, reset, imemClock, addressImem);
-	 assign address_imem = addressImem[11:0];
+	 
+	 //Old: assign address_imem = addressImem[11:0];
+	 //New
+	 assign address_imem = (is_j || is_jal || is_bex)? ((is_bex ? (data_readRegA ? address_imem[11:0] : q_imem[11:0])) : q_imem[11:0]) : addressImem[11:0];
+	 
+	 
+	
+	 //My name is chun chun chun baba chun chun chun
 	 signExtender E1(immediate, clock, signExtended);
 		
 	 //I type instructions and reset condition set registers to 0 remaining,as far as I can remember
@@ -127,10 +146,15 @@ module processor(
 	 	 
 	 //If its rtype then read from q_imem[26:22] else if its lw then dont read at all
 //	 assign ctrl_readRegA     = (is_rType) ?             rs             : (is_addi ? rs : 5'b00000);
-assign ctrl_readRegA = is_sw ? rd : rs;
+
+	assign ctrl_readRegA = is_sw ? rd : rs;
+
 	 //it shoudl just be rs 
 	 //Set to zero because the ALU will take dataOPerandB as input which will be set to sign Extended bit for calculation
+	 
 	 assign ctrl_readRegB     = (is_rType) ?             rt             : 5'b00000;
+	 
+	 
 //assign ctrl_readRegB = (is_sw)  ? rd : rt;
 	
 	 assign ctrl_writeEnable  = is_sw  ? 1'b0 : 1'b1;
