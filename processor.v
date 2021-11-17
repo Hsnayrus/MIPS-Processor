@@ -117,12 +117,13 @@ module processor(
 	 assign is_blt = ~Opcode[4] && ~Opcode[3] && Opcode[2]&& Opcode[1] && ~Opcode[0]; // 00110
 	 assign is_bex = Opcode[4] && ~Opcode[3] && Opcode[2]&& Opcode[1] && ~Opcode[0]; // 10110
 	 assign is_setx = Opcode[4] && ~Opcode[3] && Opcode[2]&& ~Opcode[1] && Opcode[0]; // 10101
+	 // Name ambiguous because it doesn't include setx, but we are not using setx to update any pc, which is what this signal is for.
 	 assign is_jiType = is_j || is_jal || is_bex;
 	 //rstatus != 0;
 	 assign rstatus1 = ~(data_readRegA == 1'd0);
 	 
 	 assign Opcode    = q_imem[31:27];
-	 assign rd        = is_jal ? 5'b11111 : q_imem[26:22];
+	 assign rd        = is_jal ? 5'b11111 : (is_setx ? 5'b11110 : q_imem[26:22]);
 	 assign rs        = is_bex ? 5'b11110 : q_imem[21:17];
 	 assign rt        = q_imem[16:12];
 	 assign immediate = q_imem[15:0];
@@ -155,14 +156,14 @@ module processor(
 	 //it shoudl just be rs 
 	 //Set to zero because the ALU will take dataOPerandB as input which will be set to sign Extended bit for calculation
 	 
-	 assign ctrl_readRegB     = (is_rType) ?             rt             : 5'b00000;
+	 assign ctrl_readRegB     = (is_rType) ?             rt             : (is_lw ? ;
 	 
 	 
 //assign ctrl_readRegB = (is_sw)  ? rd : rt;
 	
 	 assign ctrl_writeEnable  = is_sw  ? 1'b0 : 1'b1;
 	 //Should be q_dmem instead of q_imem
-	 assign data_writeReg     = (is_rType || is_addi) ? (overflow ? (is_add ? 1'd1 : (is_sub ? 1'd3 : (is_addi ? 1'd2 : aluOutput))) : aluOutput) : (is_sw ? (aluOutput): q_imem);
+	 assign data_writeReg     = (is_rType || is_addi) ? (overflow ? (is_add ? 1'd1 : (is_sub ? 1'd3 : (is_addi ? 1'd2 : aluOutput))) : aluOutput) : (is_lw ? q_dmem : (is_jal ? addressImem : q_imem);
 	 
 	 assign dataOperandA      = data_readRegA;
 	 
