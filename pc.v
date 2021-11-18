@@ -22,6 +22,27 @@ module pc(pc, reset, clock, pc_next, jumpAddress);
 endmodule
 
 
+	  /*
+ 
+ module pc(clock, q_imem, address_imem, nextAddress, signal);
+	input clock;
+	wire[11:0] addressImem, jump;
+	input[11:0] q_imem, nextAddress;
+	output[11:0] address_imem;
+	reg[11:0] addressImemReg;
+	output signal;
+	
+	assign signal = nextAddress != 32'd0;
+	assign jump = signal ? nextAddress : 12'h000;
+	
+	always @(posedge clock)begin
+	addressImemReg <= address_imem + 12'h001 + jump;
+	
+	end
+	assign addressImem = addressImemReg;
+	assign address_imem = addressImem; 
+endmodule
+ */
 
 
 

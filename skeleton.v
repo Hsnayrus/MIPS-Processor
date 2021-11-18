@@ -19,7 +19,7 @@ module skeleton(clock, reset, imem_clock, dmem_clock, processor_clock, regfile_c
         based on proper functioning with this clock.
     */
     output imem_clock, dmem_clock, processor_clock, regfile_clock;
-	 wire immefake;
+	 wire imemfake;
 	 output[31:0] dataWriteReg;
 	 
  //Clocks assigned here

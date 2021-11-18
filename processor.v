@@ -101,7 +101,21 @@ module processor(
 	 wire[15:0] immediate;
 	 wire[11:0] jump;
 	 wire is_rType, is_addi, is_sw, is_lw, is_ovf, isNotEqual, isLessThan, overflow, is_add, is_sub, is_jiType, rstatus1, pcReset;
-	 wire is_j, is_bne, is_jal, is_jr, is_blt, is_bex, is_setx;
+	 wire is_j, is_bne, is_jal, is_jr, is_blt, is_bex, is_setx, neq, lt;
+	 
+	 
+	 
+	 reg[31:0] addressImemReg;
+
+	 always @(posedge imemClock)begin
+		addressImemReg <= q_imem + jump;
+	 end
+	
+	 assign addressImem = addressImemReg;
+	 assign address_imem = addressImem[11:0];
+	 
+	 
+	 
 	 
 	 assign is_rType  = ~Opcode[4] && ~Opcode[3] && ~Opcode[2] && ~Opcode[1] && ~Opcode[0]; //00000
 	 assign is_addi   = ~Opcode[4] && ~Opcode[3] && Opcode[2]  && ~Opcode[1] && Opcode[0];  //00101
@@ -116,7 +130,7 @@ module processor(
 	 //00001
 	 assign is_j = ~Opcode[4] && ~Opcode[3] && ~Opcode[2]&& ~Opcode[1] && Opcode[0];
 	 //00010
-	 assign is_bne = ~Opcode[4] && ~Opcode[3] && ~Opcode[2]&& Opcode[1] && ~Opcode[0];
+	 assign is_bne = (~Opcode[4] && ~Opcode[3] && ~Opcode[2]&& Opcode[1] && ~Opcode[0]);
 	 assign is_jal = ~Opcode[4] && ~Opcode[3] && ~Opcode[2]&& Opcode[1] && Opcode[0]; // 00011
 	 assign is_jr = ~Opcode[4] && ~Opcode[3] && Opcode[2]&& ~Opcode[1] && ~Opcode[0]; // 00100
 	 assign is_blt = ~Opcode[4] && ~Opcode[3] && Opcode[2]&& Opcode[1] && ~Opcode[0]; // 00110
@@ -127,68 +141,37 @@ module processor(
 	 //rstatus != 0;
 	 assign rstatus1 = ~(data_readRegA == 1'd0);
 	 
+	 assign neq = is_bne && ( data_readRegA != data_readRegB);
+	 assign lt = is_blt && (data_readRegA < data_readRegB);
 	 assign is_jiType = is_j || is_jal || (is_bex && rstatus1);
 	 assign Opcode    = q_imem[31:27];
 	 assign rd        = is_jal ? 5'b11111 : (is_setx ? 5'b11110 : q_imem[26:22]);
-	 assign rs        = is_bex ? 5'b11110 : q_imem[21:17];
+	 assign rs        = is_bex ? 5'b11110 : (is_bne || is_blt ? rd : q_imem[21:17]);
 	 assign rt        = q_imem[16:12];
 	 assign immediate = q_imem[15:0];
 	 
 	 wire imemClock, dmem_clock, register_clock;
 	 	 
 	 freqBy2 f1(clock, 1'b1, imemClock);
-	 freqBy2 f2(imemClock, 1'b1, dmem_clock);
+//	 freqBy2 f2(imemClock, 1'b1, dmem_clock);
 	 
 	 
-//	 pc pc1(q_imem, pcReset, imemClock, addressImem);
-	 
-	  /*
- 
- module pc(clock, q_imem, address_imem, nextAddress, signal);
-	input clock;
-	wire[11:0] addressImem, jump;
-	input[11:0] q_imem, nextAddress;
-	output[11:0] address_imem;
-	reg[11:0] addressImemReg;
-	output signal;
-	
-	assign signal = nextAddress != 32'd0;
-	assign jump = signal ? nextAddress : 12'h000;
-	
-	always @(posedge clock)begin
-	addressImemReg <= address_imem + 12'h001 + jump;
-	
-	end
-	assign addressImem = addressImemReg;
-	assign address_imem = addressImem; 
-endmodule
- */
-	
-	 reg[31:0] addressImemReg;
-
-	 always @(posedge imemClock)begin
-		addressImemReg <= q_imem + 12'd1 + jump;
-	 end
-	
-	 assign addressImem = addressImemReg;
-	 assign address_imem = addressImem[11:0];
-	 
-	 assign jump = is_jiType ? q_imem : addressImem;
+//	 pc pc1(q_imem, pcReset, imemClock, addressImem)
+	 assign jump = is_jiType ? q_imem : (is_jr ? data_readRegA : (is_blt || is_bne ? signExtended : (addressImem + 1'b1)));
 	 
 	 
 	 //New
 //	 assign address_imem = is_jiType ? ((is_bex ? (rstatus1 ? address_imem[11:0] : q_imem[11:0]) : q_imem[11:0])) : addressImem[11:0];
 	
 	//assign address_imem = (is_jiType || (is_bex && rstatus1)) ? q_imem[11:0] : addressImem[11:0];
-	 assign signExtended[31:16] = immediate[15] ? 16'hFFF : 16'h000;
-	 assign signExtended[15:0] = immediate;
+	
 	 //I type instructions and reset condition set registers to 0 remaining,as far as I can remember
 	 assign ctrl_writeReg     = (is_rType) ? ((overflow &&(is_add || is_sub || is_addi)) ? 5'b11110 : rd) : rd ;
 	 	 
 	 //If its rtype then read from q_imem[26:22] else if its lw then dont read at all
 //	 assign ctrl_readRegA     = (is_rType) ?             rs             : (is_addi ? rs : 5'b00000);
 
-	assign ctrl_readRegA = is_sw ? rd : rs;
+	assign ctrl_readRegA = is_sw || is_jr ? rd : rs;
 
 	 //it shoudl just be rs 
 	 //Set to zero because the ALU will take dataOPerandB as input which will be set to sign Extended bit for calculation
@@ -214,6 +197,9 @@ endmodule
 	 assign wren              = is_sw;
 	 
 	 alu alu1(dataOperandA, dataOperandB, ALU_op, shamt, aluOutput, isNotEqual, isLessThan, overflow);
+	 
+	 assign signExtended[31:16] = immediate[15] ? 16'hFFF : 16'h000;
+	 assign signExtended[15:0] = immediate;
  
 endmodule	
 
