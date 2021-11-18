@@ -14,7 +14,7 @@ module signExtender(data, clock, outputData);
 //		if(data < 1'd0)
 //			outputDataUnsigned = {16'hFFFF, data};
 		else
-			outputDataUnsigned = {16'FFFF, data};
+			outputDataUnsigned = {16'hFFFF, data};
 	
 	end
 	assign outputData = outputDataUnsigned;

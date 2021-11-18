@@ -138,8 +138,8 @@ module processor(
 	 
 	 //Old: assign address_imem = addressImem[11:0];
 	 //New
-	 assign address_imem = is_jiType ? ((is_bex ? (rstatus1 ? address_imem[11:0] : q_imem[11:0])) : q_imem[11:0]) : addressImem[11:0];
-	 
+//	 assign address_imem = is_jiType ? ((is_bex ? (rstatus1 ? address_imem[11:0] : q_imem[11:0]) : q_imem[11:0])) : addressImem[11:0];
+	 assign address_imem = (is_jiType || (is_bex && rstatus1)) ? q_imem[11:0] : addressImem[11:0];
 	 
 	
 	 //My name is chun chun chun baba chun chun chun
@@ -156,14 +156,15 @@ module processor(
 	 //it shoudl just be rs 
 	 //Set to zero because the ALU will take dataOPerandB as input which will be set to sign Extended bit for calculation
 	 
-	 assign ctrl_readRegB     = (is_rType) ?             rt             : (is_lw ? ;
+	 assign ctrl_readRegB     = (is_rType) ?             rt             : 5'b00000 ;
 	 
 	 
 //assign ctrl_readRegB = (is_sw)  ? rd : rt;
 	
 	 assign ctrl_writeEnable  = is_sw  ? 1'b0 : 1'b1;
 	 //Should be q_dmem instead of q_imem
-	 assign data_writeReg     = (is_rType || is_addi) ? (overflow ? (is_add ? 1'd1 : (is_sub ? 1'd3 : (is_addi ? 1'd2 : aluOutput))) : aluOutput) : (is_lw ? q_dmem : (is_jal ? addressImem : q_imem);
+	 //Last case q_imem is not q_imem[26:0] because we are guaranteed that the first 5 bits are never gonna be used;
+	 assign data_writeReg     = (is_rType || is_addi) ? (overflow ? (is_add ? 1'd1 : (is_sub ? 1'd3 : (is_addi ? 1'd2 : aluOutput))) : aluOutput) : (is_lw ? q_dmem : (is_jal ? addressImem : q_imem));
 	 
 	 assign dataOperandA      = data_readRegA;
 	 

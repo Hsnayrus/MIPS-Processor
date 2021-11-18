@@ -1,0 +1,149 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clock'
+Slack : -17.931
+TNS   : -16698.865
+
+Type  : Slow 1200mV 85C Model Setup 'freqBy2:f2|clock_out'
+Slack : -13.847
+TNS   : -494.332
+
+Type  : Slow 1200mV 85C Model Setup 'freqBy2:f1|clock_out'
+Slack : -3.482
+TNS   : -123.790
+
+Type  : Slow 1200mV 85C Model Setup 'processor:my_processor|freqBy2:f1|clock_out'
+Slack : -2.959
+TNS   : -113.016
+
+Type  : Slow 1200mV 85C Model Hold 'clock'
+Slack : 0.544
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'processor:my_processor|freqBy2:f1|clock_out'
+Slack : 0.615
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'freqBy2:f1|clock_out'
+Slack : 0.698
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'freqBy2:f2|clock_out'
+Slack : 2.287
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clock'
+Slack : -3.000
+TNS   : -1300.850
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'freqBy2:f2|clock_out'
+Slack : -2.693
+TNS   : -215.440
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'freqBy2:f1|clock_out'
+Slack : -2.693
+TNS   : -130.549
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'processor:my_processor|freqBy2:f1|clock_out'
+Slack : -1.285
+TNS   : -82.240
+
+Type  : Slow 1200mV 0C Model Setup 'clock'
+Slack : -16.361
+TNS   : -15199.586
+
+Type  : Slow 1200mV 0C Model Setup 'freqBy2:f2|clock_out'
+Slack : -12.637
+TNS   : -450.656
+
+Type  : Slow 1200mV 0C Model Setup 'freqBy2:f1|clock_out'
+Slack : -3.191
+TNS   : -109.757
+
+Type  : Slow 1200mV 0C Model Setup 'processor:my_processor|freqBy2:f1|clock_out'
+Slack : -2.640
+TNS   : -98.073
+
+Type  : Slow 1200mV 0C Model Hold 'clock'
+Slack : 0.506
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'processor:my_processor|freqBy2:f1|clock_out'
+Slack : 0.570
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'freqBy2:f1|clock_out'
+Slack : 0.607
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'freqBy2:f2|clock_out'
+Slack : 2.151
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clock'
+Slack : -3.000
+TNS   : -1300.850
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'freqBy2:f2|clock_out'
+Slack : -2.649
+TNS   : -211.920
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'freqBy2:f1|clock_out'
+Slack : -2.649
+TNS   : -128.437
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'processor:my_processor|freqBy2:f1|clock_out'
+Slack : -1.285
+TNS   : -82.240
+
+Type  : Fast 1200mV 0C Model Setup 'clock'
+Slack : -8.712
+TNS   : -7975.665
+
+Type  : Fast 1200mV 0C Model Setup 'freqBy2:f2|clock_out'
+Slack : -6.648
+TNS   : -206.483
+
+Type  : Fast 1200mV 0C Model Setup 'freqBy2:f1|clock_out'
+Slack : -1.412
+TNS   : -31.326
+
+Type  : Fast 1200mV 0C Model Setup 'processor:my_processor|freqBy2:f1|clock_out'
+Slack : -0.957
+TNS   : -25.729
+
+Type  : Fast 1200mV 0C Model Hold 'clock'
+Slack : 0.165
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'processor:my_processor|freqBy2:f1|clock_out'
+Slack : 0.270
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'freqBy2:f1|clock_out'
+Slack : 0.317
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'freqBy2:f2|clock_out'
+Slack : 1.049
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clock'
+Slack : -3.000
+TNS   : -1080.423
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'freqBy2:f2|clock_out'
+Slack : -1.000
+TNS   : -80.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'processor:my_processor|freqBy2:f1|clock_out'
+Slack : -1.000
+TNS   : -64.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'freqBy2:f1|clock_out'
+Slack : -1.000
+TNS   : -49.000
+
+------------------------------------------------------------
