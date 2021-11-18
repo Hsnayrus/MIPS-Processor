@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "11/17/2021 19:22:22"
+// Generated on "11/18/2021 04:12:05"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          skeleton
 // 
@@ -35,6 +35,7 @@ reg reset;
 // wires                                               
 wire [11:0] addressImem;
 wire [4:0] ctrlWriteRegOP;
+wire [31:0] dataWriteReg;
 wire dmem_clock;
 wire imem_clock;
 wire processor_clock;
@@ -46,6 +47,7 @@ skeleton i1 (
 	.addressImem(addressImem),
 	.clock(clock),
 	.ctrlWriteRegOP(ctrlWriteRegOP),
+	.dataWriteReg(dataWriteReg),
 	.dmem_clock(dmem_clock),
 	.imem_clock(imem_clock),
 	.processor_clock(processor_clock),

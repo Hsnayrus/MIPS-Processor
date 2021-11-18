@@ -88,6 +88,134 @@
 					"strict" : false
 				},
 				{
+					"name" : "dataWriteReg[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[6]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[7]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[8]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[9]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[10]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[11]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[12]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[13]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[14]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[15]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[16]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[17]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[18]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[19]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[20]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[21]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[22]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[23]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[24]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[25]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[26]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[27]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[28]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[29]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[30]",
+					"strict" : false
+				},
+				{
+					"name" : "dataWriteReg[31]",
+					"strict" : false
+				},
+				{
 					"name" : "clock",
 					"strict" : false
 				},

@@ -1,6 +1,6 @@
 //Perfectly working pc
-module pc(pc, reset, clock, pc_next);
-	input[31:0] pc;
+module pc(pc, reset, clock, pc_next, jumpAddress);
+	input[31:0] pc, jumpAddress;
 	input clock, reset;
 	reg[31:0] pc_reg;
 	output[31:0] pc_next;
@@ -9,10 +9,13 @@ module pc(pc, reset, clock, pc_next);
 		pc_reg <= pc;
 		pc_next_reg <= pc_next;
 		if(reset)
-			pc_next_reg <= 12'h000;
+			pc_next_reg <= 32'h000;
 		else begin
 			pc_reg <= pc_next_reg;
-			pc_next_reg <= pc_reg + 1'b1;
+			if(jumpAddress != 32'd0)
+				pc_next_reg <= jumpAddress + 1'b1;
+			else
+				pc_next_reg <= pc_reg + 1'b1;
 		end
 	end
 	assign pc_next = pc_next_reg;

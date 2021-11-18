@@ -47,6 +47,9 @@
  * Outputs: 32-bit data at the given address
  *
  */
+ 
+ 
+
 module processor(
     // Control signals
     clock,                          // I: The master clock
@@ -96,7 +99,9 @@ module processor(
 	 wire [31:0] addressImem;
 	 wire[31:0] aluOutput;
 	 wire[15:0] immediate;
-	 wire is_rType, is_addi, is_sw, is_lw, is_ovf, isNotEqual, isLessThan, overflow, is_add, is_sub, is_jiType, rstatus1;
+	 wire[11:0] jump;
+	 wire is_rType, is_addi, is_sw, is_lw, is_ovf, isNotEqual, isLessThan, overflow, is_add, is_sub, is_jiType, rstatus1, pcReset;
+	 wire is_j, is_bne, is_jal, is_jr, is_blt, is_bex, is_setx;
 	 
 	 assign is_rType  = ~Opcode[4] && ~Opcode[3] && ~Opcode[2] && ~Opcode[1] && ~Opcode[0]; //00000
 	 assign is_addi   = ~Opcode[4] && ~Opcode[3] && Opcode[2]  && ~Opcode[1] && Opcode[0];  //00101
@@ -118,10 +123,11 @@ module processor(
 	 assign is_bex = Opcode[4] && ~Opcode[3] && Opcode[2]&& Opcode[1] && ~Opcode[0]; // 10110
 	 assign is_setx = Opcode[4] && ~Opcode[3] && Opcode[2]&& ~Opcode[1] && Opcode[0]; // 10101
 	 // Name ambiguous because it doesn't include setx, but we are not using setx to update any pc, which is what this signal is for.
-	 assign is_jiType = is_j || is_jal || is_bex;
+	 
 	 //rstatus != 0;
 	 assign rstatus1 = ~(data_readRegA == 1'd0);
 	 
+	 assign is_jiType = is_j || is_jal || (is_bex && rstatus1);
 	 assign Opcode    = q_imem[31:27];
 	 assign rd        = is_jal ? 5'b11111 : (is_setx ? 5'b11110 : q_imem[26:22]);
 	 assign rs        = is_bex ? 5'b11110 : q_imem[21:17];
@@ -129,22 +135,53 @@ module processor(
 	 assign immediate = q_imem[15:0];
 	 
 	 wire imemClock, dmem_clock, register_clock;
-	 
-	 
+	 	 
 	 freqBy2 f1(clock, 1'b1, imemClock);
 	 freqBy2 f2(imemClock, 1'b1, dmem_clock);
 	 
-	 pc pc1(q_imem, reset, imemClock, addressImem);
 	 
-	 //Old: assign address_imem = addressImem[11:0];
+//	 pc pc1(q_imem, pcReset, imemClock, addressImem);
+	 
+	  /*
+ 
+ module pc(clock, q_imem, address_imem, nextAddress, signal);
+	input clock;
+	wire[11:0] addressImem, jump;
+	input[11:0] q_imem, nextAddress;
+	output[11:0] address_imem;
+	reg[11:0] addressImemReg;
+	output signal;
+	
+	assign signal = nextAddress != 32'd0;
+	assign jump = signal ? nextAddress : 12'h000;
+	
+	always @(posedge clock)begin
+	addressImemReg <= address_imem + 12'h001 + jump;
+	
+	end
+	assign addressImem = addressImemReg;
+	assign address_imem = addressImem; 
+endmodule
+ */
+	
+	 reg[31:0] addressImemReg;
+
+	 always @(posedge imemClock)begin
+		addressImemReg <= q_imem + 12'd1 + jump;
+	 end
+	
+	 assign addressImem = addressImemReg;
+	 assign address_imem = addressImem[11:0];
+	 
+	 assign jump = is_jiType ? q_imem : addressImem;
+	 
+	 
 	 //New
 //	 assign address_imem = is_jiType ? ((is_bex ? (rstatus1 ? address_imem[11:0] : q_imem[11:0]) : q_imem[11:0])) : addressImem[11:0];
-	 assign address_imem = (is_jiType || (is_bex && rstatus1)) ? q_imem[11:0] : addressImem[11:0];
-	 
 	
-	 //My name is chun chun chun baba chun chun chun
-	 signExtender E1(immediate, clock, signExtended);
-		
+	//assign address_imem = (is_jiType || (is_bex && rstatus1)) ? q_imem[11:0] : addressImem[11:0];
+	 assign signExtended[31:16] = immediate[15] ? 16'hFFF : 16'h000;
+	 assign signExtended[15:0] = immediate;
 	 //I type instructions and reset condition set registers to 0 remaining,as far as I can remember
 	 assign ctrl_writeReg     = (is_rType) ? ((overflow &&(is_add || is_sub || is_addi)) ? 5'b11110 : rd) : rd ;
 	 	 
@@ -164,11 +201,11 @@ module processor(
 	 assign ctrl_writeEnable  = is_sw  ? 1'b0 : 1'b1;
 	 //Should be q_dmem instead of q_imem
 	 //Last case q_imem is not q_imem[26:0] because we are guaranteed that the first 5 bits are never gonna be used;
-	 assign data_writeReg     = (is_rType || is_addi) ? (overflow ? (is_add ? 1'd1 : (is_sub ? 1'd3 : (is_addi ? 1'd2 : aluOutput))) : aluOutput) : (is_lw ? q_dmem : (is_jal ? addressImem : q_imem));
+	 assign data_writeReg     = (is_rType || is_addi) ? (overflow ? (is_add ? 32'd1 : (is_sub ? 32'd3 : (is_addi ? 32'd2 : aluOutput))) : aluOutput) : (is_lw ? q_dmem : (is_jal ? addressImem : (is_setx ? q_imem : 32'd0)));
 	 
-	 assign dataOperandA      = data_readRegA;
+	 assign dataOperandA      = is_jiType ? 32'd0 : data_readRegA;
 	 
-	 assign dataOperandB      = is_rType ? data_readRegB : signExtended;
+	 assign dataOperandB      = is_rType ? data_readRegB : (is_jiType ? 32'd0 : signExtended);
 	 
 	 assign address_dmem      = aluOutput[11:0];
 	 
