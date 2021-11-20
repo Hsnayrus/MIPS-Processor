@@ -1,5 +1,5 @@
 Analysis & Synthesis report for pc5
-Thu Nov 18 13:35:11 2021
+Fri Nov 19 18:59:59 2021
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -14,23 +14,22 @@ Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
-  9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
- 11. General Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Source assignments for imem:my_imem|altsyncram:altsyncram_component|altsyncram_m591:auto_generated
- 14. Source assignments for dmem:my_dmem|altsyncram:altsyncram_component|altsyncram_0jf1:auto_generated
- 15. Parameter Settings for User Entity Instance: imem:my_imem|altsyncram:altsyncram_component
- 16. Parameter Settings for User Entity Instance: dmem:my_dmem|altsyncram:altsyncram_component
- 17. altsyncram Parameter Settings by Entity Instance
- 18. Port Connectivity Checks: "processor:my_processor|alu:alu1"
- 19. Port Connectivity Checks: "processor:my_processor|freqBy2:f1"
- 20. Port Connectivity Checks: "freqBy2:f2"
- 21. Port Connectivity Checks: "freqBy2:f1"
- 22. Post-Synthesis Netlist Statistics for Top Partition
- 23. Elapsed Time Per Partition
- 24. Analysis & Synthesis Messages
- 25. Analysis & Synthesis Suppressed Messages
+  9. Analysis & Synthesis IP Cores Summary
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for imem:my_imem|altsyncram:altsyncram_component|altsyncram_ahb1:auto_generated
+ 15. Source assignments for dmem:my_dmem|altsyncram:altsyncram_component|altsyncram_0jf1:auto_generated
+ 16. Parameter Settings for User Entity Instance: imem:my_imem|altsyncram:altsyncram_component
+ 17. Parameter Settings for User Entity Instance: dmem:my_dmem|altsyncram:altsyncram_component
+ 18. altsyncram Parameter Settings by Entity Instance
+ 19. Port Connectivity Checks: "processor:my_processor|alu:alu1"
+ 20. Port Connectivity Checks: "processor:my_processor|freqBy2:f1"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+ 24. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -57,15 +56,15 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Nov 18 13:35:11 2021       ;
+; Analysis & Synthesis Status        ; Successful - Fri Nov 19 18:59:59 2021       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; pc5                                         ;
 ; Top-level Entity Name              ; skeleton                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 3,157                                       ;
-;     Total combinational functions  ; 2,197                                       ;
-;     Dedicated logic registers      ; 1,027                                       ;
-; Total registers                    ; 1027                                        ;
+; Total logic elements               ; 3,127                                       ;
+;     Total combinational functions  ; 2,167                                       ;
+;     Dedicated logic registers      ; 1,008                                       ;
+; Total registers                    ; 1008                                        ;
 ; Total pins                         ; 55                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 262,144                                     ;
@@ -172,64 +171,65 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                 ;
-+----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                                                                         ; Library ;
-+----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+---------+
-; imem.mif                         ; yes             ; User Memory Initialization File  ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/imem.mif               ;         ;
-; skeleton.v                       ; yes             ; User Verilog HDL File            ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v             ;         ;
-; regfile.v                        ; yes             ; User Verilog HDL File            ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/regfile.v              ;         ;
-; processor.v                      ; yes             ; User Verilog HDL File            ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/processor.v            ;         ;
-; imem.v                           ; yes             ; User Wizard-Generated File       ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/imem.v                 ;         ;
-; freqBy2.v                        ; yes             ; User Verilog HDL File            ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/freqBy2.v              ;         ;
-; dmem.v                           ; yes             ; User Wizard-Generated File       ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/dmem.v                 ;         ;
-; alu.v                            ; yes             ; User Verilog HDL File            ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/alu.v                  ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                     ; c:/altera_lite/16.0/quartus/libraries/megafunctions/altsyncram.tdf                                                                   ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                     ; c:/altera_lite/16.0/quartus/libraries/megafunctions/stratix_ram_block.inc                                                            ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                     ; c:/altera_lite/16.0/quartus/libraries/megafunctions/lpm_mux.inc                                                                      ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                     ; c:/altera_lite/16.0/quartus/libraries/megafunctions/lpm_decode.inc                                                                   ;         ;
-; aglobal160.inc                   ; yes             ; Megafunction                     ; c:/altera_lite/16.0/quartus/libraries/megafunctions/aglobal160.inc                                                                   ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                     ; c:/altera_lite/16.0/quartus/libraries/megafunctions/a_rdenreg.inc                                                                    ;         ;
-; altrom.inc                       ; yes             ; Megafunction                     ; c:/altera_lite/16.0/quartus/libraries/megafunctions/altrom.inc                                                                       ;         ;
-; altram.inc                       ; yes             ; Megafunction                     ; c:/altera_lite/16.0/quartus/libraries/megafunctions/altram.inc                                                                       ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                     ; c:/altera_lite/16.0/quartus/libraries/megafunctions/altdpram.inc                                                                     ;         ;
-; db/altsyncram_m591.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/db/altsyncram_m591.tdf ;         ;
-; db/altsyncram_0jf1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/db/altsyncram_0jf1.tdf ;         ;
-+----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                               ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                                                                                 ; Library ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; skeleton.v                       ; yes             ; User Verilog HDL File                  ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v                     ;         ;
+; regfile.v                        ; yes             ; User Verilog HDL File                  ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/regfile.v                      ;         ;
+; processor.v                      ; yes             ; User Verilog HDL File                  ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/processor.v                    ;         ;
+; imem.v                           ; yes             ; User Wizard-Generated File             ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/imem.v                         ;         ;
+; freqBy2.v                        ; yes             ; User Verilog HDL File                  ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/freqBy2.v                      ;         ;
+; dmem.v                           ; yes             ; User Wizard-Generated File             ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/dmem.v                         ;         ;
+; alu.v                            ; yes             ; User Verilog HDL File                  ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/alu.v                          ;         ;
+; clkDiv4.v                        ; yes             ; User Verilog HDL File                  ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/clkDiv4.v                      ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera_lite/16.0/quartus/libraries/megafunctions/altsyncram.tdf                                                                           ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera_lite/16.0/quartus/libraries/megafunctions/stratix_ram_block.inc                                                                    ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera_lite/16.0/quartus/libraries/megafunctions/lpm_mux.inc                                                                              ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera_lite/16.0/quartus/libraries/megafunctions/lpm_decode.inc                                                                           ;         ;
+; aglobal160.inc                   ; yes             ; Megafunction                           ; c:/altera_lite/16.0/quartus/libraries/megafunctions/aglobal160.inc                                                                           ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera_lite/16.0/quartus/libraries/megafunctions/a_rdenreg.inc                                                                            ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera_lite/16.0/quartus/libraries/megafunctions/altrom.inc                                                                               ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/altera_lite/16.0/quartus/libraries/megafunctions/altram.inc                                                                               ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera_lite/16.0/quartus/libraries/megafunctions/altdpram.inc                                                                             ;         ;
+; db/altsyncram_ahb1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/db/altsyncram_ahb1.tdf         ;         ;
+; mif_outputs/basictestcases.mif   ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/mif_outputs/basictestcases.mif ;         ;
+; db/altsyncram_0jf1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/db/altsyncram_0jf1.tdf         ;         ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary               ;
-+---------------------------------------------+-------------+
-; Resource                                    ; Usage       ;
-+---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 3,157       ;
-;                                             ;             ;
-; Total combinational functions               ; 2197        ;
-; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 1936        ;
-;     -- 3 input functions                    ; 186         ;
-;     -- <=2 input functions                  ; 75          ;
-;                                             ;             ;
-; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 2091        ;
-;     -- arithmetic mode                      ; 106         ;
-;                                             ;             ;
-; Total registers                             ; 1027        ;
-;     -- Dedicated logic registers            ; 1027        ;
-;     -- I/O registers                        ; 0           ;
-;                                             ;             ;
-; I/O pins                                    ; 55          ;
-; Total memory bits                           ; 262144      ;
-;                                             ;             ;
-; Embedded Multiplier 9-bit elements          ; 0           ;
-;                                             ;             ;
-; Maximum fan-out node                        ; clock~input ;
-; Maximum fan-out                             ; 996         ;
-; Total fan-out                               ; 13489       ;
-; Average fan-out                             ; 3.97        ;
-+---------------------------------------------+-------------+
++------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                            ;
++---------------------------------------------+--------------------------+
+; Resource                                    ; Usage                    ;
++---------------------------------------------+--------------------------+
+; Estimated Total logic elements              ; 3,127                    ;
+;                                             ;                          ;
+; Total combinational functions               ; 2167                     ;
+; Logic element usage by number of LUT inputs ;                          ;
+;     -- 4 input functions                    ; 1902                     ;
+;     -- 3 input functions                    ; 220                      ;
+;     -- <=2 input functions                  ; 45                       ;
+;                                             ;                          ;
+; Logic elements by mode                      ;                          ;
+;     -- normal mode                          ; 2092                     ;
+;     -- arithmetic mode                      ; 75                       ;
+;                                             ;                          ;
+; Total registers                             ; 1008                     ;
+;     -- Dedicated logic registers            ; 1008                     ;
+;     -- I/O registers                        ; 0                        ;
+;                                             ;                          ;
+; I/O pins                                    ; 55                       ;
+; Total memory bits                           ; 262144                   ;
+;                                             ;                          ;
+; Embedded Multiplier 9-bit elements          ; 0                        ;
+;                                             ;                          ;
+; Maximum fan-out node                        ; clkDiv4:comb_3|clk_track ;
+; Maximum fan-out                             ; 1015                     ;
+; Total fan-out                               ; 13387                    ;
+; Average fan-out                             ; 4.00                     ;
++---------------------------------------------+--------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -237,82 +237,129 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                   ; Entity Name     ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------+-----------------+--------------+
-; |skeleton                                 ; 2197 (0)          ; 1027 (0)     ; 262144      ; 0            ; 0       ; 0         ; 55   ; 0            ; |skeleton                                                                             ; skeleton        ; work         ;
+; |skeleton                                 ; 2167 (0)          ; 1008 (0)     ; 262144      ; 0            ; 0       ; 0         ; 55   ; 0            ; |skeleton                                                                             ; skeleton        ; work         ;
+;    |clkDiv4:comb_3|                       ; 3 (3)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|clkDiv4:comb_3                                                              ; clkDiv4         ; work         ;
 ;    |dmem:my_dmem|                         ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|dmem:my_dmem                                                                ; dmem            ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|dmem:my_dmem|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
 ;          |altsyncram_0jf1:auto_generated| ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|dmem:my_dmem|altsyncram:altsyncram_component|altsyncram_0jf1:auto_generated ; altsyncram_0jf1 ; work         ;
-;    |freqBy2:f1|                           ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|freqBy2:f1                                                                  ; freqBy2         ; work         ;
-;    |freqBy2:f2|                           ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|freqBy2:f2                                                                  ; freqBy2         ; work         ;
+;    |freqBy2:comb_4|                       ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|freqBy2:comb_4                                                              ; freqBy2         ; work         ;
 ;    |imem:my_imem|                         ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|imem:my_imem                                                                ; imem            ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|imem:my_imem|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
-;          |altsyncram_m591:auto_generated| ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|imem:my_imem|altsyncram:altsyncram_component|altsyncram_m591:auto_generated ; altsyncram_m591 ; work         ;
-;    |processor:my_processor|               ; 816 (392)         ; 33 (32)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|processor:my_processor                                                      ; processor       ; work         ;
-;       |alu:alu1|                          ; 423 (423)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|processor:my_processor|alu:alu1                                             ; alu             ; work         ;
-;       |freqBy2:f1|                        ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|processor:my_processor|freqBy2:f1                                           ; freqBy2         ; work         ;
-;    |regfile:my_regfile|                   ; 1379 (1379)       ; 992 (992)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|regfile:my_regfile                                                          ; regfile         ; work         ;
+;          |altsyncram_ahb1:auto_generated| ; 0 (0)             ; 0 (0)        ; 131072      ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|imem:my_imem|altsyncram:altsyncram_component|altsyncram_ahb1:auto_generated ; altsyncram_ahb1 ; work         ;
+;    |processor:my_processor|               ; 779 (359)         ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|processor:my_processor                                                      ; processor       ; work         ;
+;       |alu:alu1|                          ; 420 (420)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|processor:my_processor|alu:alu1                                             ; alu             ; work         ;
+;    |regfile:my_regfile|                   ; 1384 (1384)       ; 992 (992)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |skeleton|regfile:my_regfile                                                          ; regfile         ; work         ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                            ;
-+----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+----------+
-; Name                                                                                   ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF      ;
-+----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+----------+
-; dmem:my_dmem|altsyncram:altsyncram_component|altsyncram_0jf1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 4096         ; 32           ; --           ; --           ; 131072 ; None     ;
-; imem:my_imem|altsyncram:altsyncram_component|altsyncram_m591:auto_generated|ALTSYNCRAM ; AUTO ; ROM         ; 4096         ; 32           ; --           ; --           ; 131072 ; imem.mif ;
-+----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+----------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                    ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+----------------------------------+
+; Name                                                                                   ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF                              ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+----------------------------------+
+; dmem:my_dmem|altsyncram:altsyncram_component|altsyncram_0jf1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 4096         ; 32           ; --           ; --           ; 131072 ; None                             ;
+; imem:my_imem|altsyncram:altsyncram_component|altsyncram_ahb1:auto_generated|ALTSYNCRAM ; AUTO ; ROM         ; 4096         ; 32           ; --           ; --           ; 131072 ; ./mif_outputs/basicTestCases.mif ;
++----------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------+----------------------------------+
 
 
-+--------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                   ;
-+----------------------------------------+---------------------------------------------+
-; Register name                          ; Reason for Removal                          ;
-+----------------------------------------+---------------------------------------------+
-; regfile:my_regfile|registers[0][31]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][30]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][29]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][28]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][14]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][13]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][11]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][10]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][9]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][8]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][7]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][6]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][4]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][3]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][2]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][1]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][0]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][12]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][5]     ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][27]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][26]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][25]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][24]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][23]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][22]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][21]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][20]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][19]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][18]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][17]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][16]    ; Stuck at GND due to stuck port clock_enable ;
-; regfile:my_regfile|registers[0][15]    ; Stuck at GND due to stuck port clock_enable ;
-; Total Number of Removed Registers = 32 ;                                             ;
-+----------------------------------------+---------------------------------------------+
++----------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                    ;
++--------+--------------+---------+--------------+--------------+------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance        ; IP Include File ;
++--------+--------------+---------+--------------+--------------+------------------------+-----------------+
+; Altera ; ROM: 1-PORT  ; 16.0    ; N/A          ; N/A          ; |skeleton|imem:my_imem ; imem.v          ;
++--------+--------------+---------+--------------+--------------+------------------------+-----------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                      ;
-+-------------------------------------+--------------------------------+---------------------------------------------------------------------------+
-; Register name                       ; Reason for Removal             ; Registers Removed due to This Register                                    ;
-+-------------------------------------+--------------------------------+---------------------------------------------------------------------------+
-; regfile:my_regfile|registers[0][30] ; Stuck at GND                   ; regfile:my_regfile|registers[0][22], regfile:my_regfile|registers[0][19], ;
-;                                     ; due to stuck port clock_enable ; regfile:my_regfile|registers[0][17]                                       ;
-+-------------------------------------+--------------------------------+---------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++-----------------------------------------------+---------------------------------------------+
+; Register name                                 ; Reason for Removal                          ;
++-----------------------------------------------+---------------------------------------------+
+; processor:my_processor|addressImemReg[12..31] ; Stuck at GND due to stuck port data_in      ;
+; regfile:my_regfile|registers[0][31]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][30]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][29]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][28]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][2]            ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][1]            ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][0]            ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][11]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][27]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][26]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][19]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][25]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][24]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][23]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][22]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][21]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][20]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][18]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][17]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][16]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][15]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][14]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][13]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][12]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][10]           ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][9]            ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][8]            ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][7]            ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][6]            ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][5]            ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][4]            ; Stuck at GND due to stuck port clock_enable ;
+; regfile:my_regfile|registers[0][3]            ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 52        ;                                             ;
++-----------------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                    ;
++-------------------------------------------+---------------------------+----------------------------------------+
+; Register name                             ; Reason for Removal        ; Registers Removed due to This Register ;
++-------------------------------------------+---------------------------+----------------------------------------+
+; processor:my_processor|addressImemReg[31] ; Stuck at GND              ; regfile:my_regfile|registers[0][31]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[30] ; Stuck at GND              ; regfile:my_regfile|registers[0][30]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[29] ; Stuck at GND              ; regfile:my_regfile|registers[0][29]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[28] ; Stuck at GND              ; regfile:my_regfile|registers[0][28]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[27] ; Stuck at GND              ; regfile:my_regfile|registers[0][27]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[26] ; Stuck at GND              ; regfile:my_regfile|registers[0][26]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[25] ; Stuck at GND              ; regfile:my_regfile|registers[0][25]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[24] ; Stuck at GND              ; regfile:my_regfile|registers[0][24]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[23] ; Stuck at GND              ; regfile:my_regfile|registers[0][23]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[22] ; Stuck at GND              ; regfile:my_regfile|registers[0][22]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[21] ; Stuck at GND              ; regfile:my_regfile|registers[0][21]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[20] ; Stuck at GND              ; regfile:my_regfile|registers[0][20]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[19] ; Stuck at GND              ; regfile:my_regfile|registers[0][19]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[18] ; Stuck at GND              ; regfile:my_regfile|registers[0][18]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[17] ; Stuck at GND              ; regfile:my_regfile|registers[0][17]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[16] ; Stuck at GND              ; regfile:my_regfile|registers[0][16]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[15] ; Stuck at GND              ; regfile:my_regfile|registers[0][15]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[14] ; Stuck at GND              ; regfile:my_regfile|registers[0][14]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[13] ; Stuck at GND              ; regfile:my_regfile|registers[0][13]    ;
+;                                           ; due to stuck port data_in ;                                        ;
+; processor:my_processor|addressImemReg[12] ; Stuck at GND              ; regfile:my_regfile|registers[0][12]    ;
+;                                           ; due to stuck port data_in ;                                        ;
++-------------------------------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -320,10 +367,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1027  ;
+; Total registers                              ; 1008  ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 992   ;
+; Number of registers using Synchronous Load   ; 12    ;
+; Number of registers using Asynchronous Clear ; 995   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 992   ;
 ; Number of registers using Preset             ; 0     ;
@@ -335,26 +382,26 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |skeleton|processor:my_processor|rd[0]               ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |skeleton|processor:my_processor|dataOperandB[14]    ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |skeleton|processor:my_processor|ctrl_readRegA[2]    ;
-; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |skeleton|processor:my_processor|jump[11]            ;
-; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |skeleton|regfile:my_regfile|Mux34                   ;
-; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |skeleton|regfile:my_regfile|Mux17                   ;
-; 9:1                ; 13 bits   ; 78 LEs        ; 52 LEs               ; 26 LEs                 ; No         ; |skeleton|processor:my_processor|data_writeReg[11]   ;
-; 35:1               ; 4 bits    ; 92 LEs        ; 20 LEs               ; 72 LEs                 ; No         ; |skeleton|processor:my_processor|alu:alu1|Selector21 ;
-; 36:1               ; 4 bits    ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; No         ; |skeleton|processor:my_processor|alu:alu1|Selector25 ;
+; 4:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |skeleton|processor:my_processor|addressImemReg[1]   ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |skeleton|processor:my_processor|rd[4]               ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |skeleton|processor:my_processor|dataOperandB[9]     ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |skeleton|processor:my_processor|ctrl_readRegA[4]    ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |skeleton|regfile:my_regfile|Mux36                   ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; No         ; |skeleton|regfile:my_regfile|Mux29                   ;
+; 9:1                ; 12 bits   ; 72 LEs        ; 48 LEs               ; 24 LEs                 ; No         ; |skeleton|processor:my_processor|data_writeReg[2]    ;
+; 35:1               ; 4 bits    ; 92 LEs        ; 20 LEs               ; 72 LEs                 ; No         ; |skeleton|processor:my_processor|alu:alu1|Selector20 ;
+; 36:1               ; 4 bits    ; 96 LEs        ; 24 LEs               ; 72 LEs                 ; No         ; |skeleton|processor:my_processor|alu:alu1|Selector27 ;
 ; 37:1               ; 2 bits    ; 48 LEs        ; 12 LEs               ; 36 LEs                 ; No         ; |skeleton|processor:my_processor|alu:alu1|Selector29 ;
 ; 38:1               ; 2 bits    ; 50 LEs        ; 14 LEs               ; 36 LEs                 ; No         ; |skeleton|processor:my_processor|alu:alu1|Selector31 ;
-; 42:1               ; 4 bits    ; 112 LEs       ; 32 LEs               ; 80 LEs                 ; No         ; |skeleton|processor:my_processor|data_writeReg[15]   ;
-; 42:1               ; 8 bits    ; 224 LEs       ; 64 LEs               ; 160 LEs                ; No         ; |skeleton|processor:my_processor|data_writeReg[17]   ;
+; 42:1               ; 4 bits    ; 112 LEs       ; 28 LEs               ; 84 LEs                 ; No         ; |skeleton|processor:my_processor|data_writeReg[14]   ;
+; 42:1               ; 8 bits    ; 224 LEs       ; 64 LEs               ; 160 LEs                ; No         ; |skeleton|processor:my_processor|data_writeReg[23]   ;
 ; 43:1               ; 4 bits    ; 112 LEs       ; 36 LEs               ; 76 LEs                 ; No         ; |skeleton|processor:my_processor|data_writeReg[24]   ;
-; 44:1               ; 2 bits    ; 58 LEs        ; 20 LEs               ; 38 LEs                 ; No         ; |skeleton|processor:my_processor|data_writeReg[28]   ;
+; 44:1               ; 2 bits    ; 58 LEs        ; 18 LEs               ; 40 LEs                 ; No         ; |skeleton|processor:my_processor|data_writeReg[28]   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------+
-; Source assignments for imem:my_imem|altsyncram:altsyncram_component|altsyncram_m591:auto_generated ;
+; Source assignments for imem:my_imem|altsyncram:altsyncram_component|altsyncram_ahb1:auto_generated ;
 +---------------------------------+--------------------+------+--------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                   ;
 +---------------------------------+--------------------+------+--------------------------------------+
@@ -373,62 +420,62 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 +-------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: imem:my_imem|altsyncram:altsyncram_component ;
-+------------------------------------+----------------------+-------------------------------+
-; Parameter Name                     ; Value                ; Type                          ;
-+------------------------------------+----------------------+-------------------------------+
-; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                       ;
-; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                    ;
-; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                  ;
-; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                  ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                ;
-; WIDTH_BYTEENA                      ; 1                    ; Untyped                       ;
-; OPERATION_MODE                     ; ROM                  ; Untyped                       ;
-; WIDTH_A                            ; 32                   ; Signed Integer                ;
-; WIDTHAD_A                          ; 12                   ; Signed Integer                ;
-; NUMWORDS_A                         ; 4096                 ; Signed Integer                ;
-; OUTDATA_REG_A                      ; CLOCK0               ; Untyped                       ;
-; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                       ;
-; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                       ;
-; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                       ;
-; INDATA_ACLR_A                      ; NONE                 ; Untyped                       ;
-; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                       ;
-; WIDTH_B                            ; 1                    ; Untyped                       ;
-; WIDTHAD_B                          ; 1                    ; Untyped                       ;
-; NUMWORDS_B                         ; 1                    ; Untyped                       ;
-; INDATA_REG_B                       ; CLOCK1               ; Untyped                       ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                       ;
-; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                       ;
-; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                       ;
-; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                       ;
-; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                       ;
-; INDATA_ACLR_B                      ; NONE                 ; Untyped                       ;
-; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                       ;
-; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                       ;
-; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                       ;
-; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                       ;
-; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                       ;
-; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                ;
-; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                       ;
-; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                       ;
-; BYTE_SIZE                          ; 8                    ; Untyped                       ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                       ;
-; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                       ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                       ;
-; INIT_FILE                          ; imem.mif             ; Untyped                       ;
-; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                       ;
-; MAXIMUM_DEPTH                      ; 0                    ; Untyped                       ;
-; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                       ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                       ;
-; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                       ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                       ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                       ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                       ;
-; ENABLE_ECC                         ; FALSE                ; Untyped                       ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                       ;
-; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                       ;
-; DEVICE_FAMILY                      ; Cyclone IV E         ; Untyped                       ;
-; CBXI_PARAMETER                     ; altsyncram_m591      ; Untyped                       ;
-+------------------------------------+----------------------+-------------------------------+
++------------------------------------+----------------------------------+-------------------+
+; Parameter Name                     ; Value                            ; Type              ;
++------------------------------------+----------------------------------+-------------------+
+; BYTE_SIZE_BLOCK                    ; 8                                ; Untyped           ;
+; AUTO_CARRY_CHAINS                  ; ON                               ; AUTO_CARRY        ;
+; IGNORE_CARRY_BUFFERS               ; OFF                              ; IGNORE_CARRY      ;
+; AUTO_CASCADE_CHAINS                ; ON                               ; AUTO_CASCADE      ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                              ; IGNORE_CASCADE    ;
+; WIDTH_BYTEENA                      ; 1                                ; Untyped           ;
+; OPERATION_MODE                     ; ROM                              ; Untyped           ;
+; WIDTH_A                            ; 32                               ; Signed Integer    ;
+; WIDTHAD_A                          ; 12                               ; Signed Integer    ;
+; NUMWORDS_A                         ; 4096                             ; Signed Integer    ;
+; OUTDATA_REG_A                      ; CLOCK0                           ; Untyped           ;
+; ADDRESS_ACLR_A                     ; NONE                             ; Untyped           ;
+; OUTDATA_ACLR_A                     ; NONE                             ; Untyped           ;
+; WRCONTROL_ACLR_A                   ; NONE                             ; Untyped           ;
+; INDATA_ACLR_A                      ; NONE                             ; Untyped           ;
+; BYTEENA_ACLR_A                     ; NONE                             ; Untyped           ;
+; WIDTH_B                            ; 1                                ; Untyped           ;
+; WIDTHAD_B                          ; 1                                ; Untyped           ;
+; NUMWORDS_B                         ; 1                                ; Untyped           ;
+; INDATA_REG_B                       ; CLOCK1                           ; Untyped           ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                           ; Untyped           ;
+; RDCONTROL_REG_B                    ; CLOCK1                           ; Untyped           ;
+; ADDRESS_REG_B                      ; CLOCK1                           ; Untyped           ;
+; OUTDATA_REG_B                      ; UNREGISTERED                     ; Untyped           ;
+; BYTEENA_REG_B                      ; CLOCK1                           ; Untyped           ;
+; INDATA_ACLR_B                      ; NONE                             ; Untyped           ;
+; WRCONTROL_ACLR_B                   ; NONE                             ; Untyped           ;
+; ADDRESS_ACLR_B                     ; NONE                             ; Untyped           ;
+; OUTDATA_ACLR_B                     ; NONE                             ; Untyped           ;
+; RDCONTROL_ACLR_B                   ; NONE                             ; Untyped           ;
+; BYTEENA_ACLR_B                     ; NONE                             ; Untyped           ;
+; WIDTH_BYTEENA_A                    ; 1                                ; Signed Integer    ;
+; WIDTH_BYTEENA_B                    ; 1                                ; Untyped           ;
+; RAM_BLOCK_TYPE                     ; AUTO                             ; Untyped           ;
+; BYTE_SIZE                          ; 8                                ; Untyped           ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                        ; Untyped           ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ             ; Untyped           ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ             ; Untyped           ;
+; INIT_FILE                          ; ./mif_outputs/basicTestCases.mif ; Untyped           ;
+; INIT_FILE_LAYOUT                   ; PORT_A                           ; Untyped           ;
+; MAXIMUM_DEPTH                      ; 0                                ; Untyped           ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS                           ; Untyped           ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                           ; Untyped           ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS                           ; Untyped           ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                           ; Untyped           ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                  ; Untyped           ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                  ; Untyped           ;
+; ENABLE_ECC                         ; FALSE                            ; Untyped           ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                            ; Untyped           ;
+; WIDTH_ECCSTATUS                    ; 3                                ; Untyped           ;
+; DEVICE_FAMILY                      ; Cyclone IV E                     ; Untyped           ;
+; CBXI_PARAMETER                     ; altsyncram_ahb1                  ; Untyped           ;
++------------------------------------+----------------------------------+-------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -534,31 +581,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+---------------------------------------------------------------+
-; Port Connectivity Checks: "processor:my_processor|freqBy2:f1" ;
-+-------+-------+----------+------------------------------------+
-; Port  ; Type  ; Severity ; Details                            ;
-+-------+-------+----------+------------------------------------+
-; reset ; Input ; Info     ; Stuck at VCC                       ;
-+-------+-------+----------+------------------------------------+
-
-
-+-----------------------------------------+
-; Port Connectivity Checks: "freqBy2:f2"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at VCC ;
-+-------+-------+----------+--------------+
-
-
-+-----------------------------------------+
-; Port Connectivity Checks: "freqBy2:f1"  ;
-+-------+-------+----------+--------------+
-; Port  ; Type  ; Severity ; Details      ;
-+-------+-------+----------+--------------+
-; reset ; Input ; Info     ; Stuck at VCC ;
-+-------+-------+----------+--------------+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "processor:my_processor|freqBy2:f1"                                                     ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; rst     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; out_clk ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -567,22 +597,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 55                          ;
-; cycloneiii_ff         ; 1027                        ;
+; cycloneiii_ff         ; 1008                        ;
+;     CLR               ; 3                           ;
 ;     ENA CLR           ; 992                         ;
-;     plain             ; 35                          ;
-; cycloneiii_lcell_comb ; 2197                        ;
-;     arith             ; 106                         ;
-;         2 data inputs ; 30                          ;
-;         3 data inputs ; 76                          ;
-;     normal            ; 2091                        ;
-;         1 data inputs ; 5                           ;
-;         2 data inputs ; 40                          ;
-;         3 data inputs ; 110                         ;
-;         4 data inputs ; 1936                        ;
+;     SLD               ; 12                          ;
+;     plain             ; 1                           ;
+; cycloneiii_lcell_comb ; 2167                        ;
+;     arith             ; 75                          ;
+;         2 data inputs ; 11                          ;
+;         3 data inputs ; 64                          ;
+;     normal            ; 2092                        ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 32                          ;
+;         3 data inputs ; 156                         ;
+;         4 data inputs ; 1902                        ;
 ; cycloneiii_ram_block  ; 64                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 24.10                       ;
-; Average LUT depth     ; 19.45                       ;
+; Max LUT depth         ; 23.10                       ;
+; Average LUT depth     ; 19.07                       ;
 +-----------------------+-----------------------------+
 
 
@@ -591,7 +623,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:10     ;
+; Top            ; 00:00:09     ;
 +----------------+--------------+
 
 
@@ -601,7 +633,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Thu Nov 18 13:34:48 2021
+    Info: Processing started: Fri Nov 19 18:59:40 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pc5 -c pc5
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 0 design units, including 0 entities, in source file skeleton_test.v
@@ -631,18 +663,24 @@ Info (12021): Found 1 design units, including 1 entities, in source file basic_t
     Info (12023): Found entity 1: basic_tb File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/basic_tb.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
     Info (12023): Found entity 1: alu File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/alu.v Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at skeleton.v(29): created implicit net for "imemFake" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 29
+Info (12021): Found 1 design units, including 1 entities, in source file clkdiv4.v
+    Info (12023): Found entity 1: clkDiv4 File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/clkDiv4.v Line: 1
 Warning (10236): Verilog HDL Implicit Net warning at basic_tb.v(20): created implicit net for "proc_" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/basic_tb.v Line: 20
+Critical Warning (10846): Verilog HDL Instantiation warning at skeleton.v(26): instance has no name File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 26
+Critical Warning (10846): Verilog HDL Instantiation warning at skeleton.v(27): instance has no name File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 27
 Info (12127): Elaborating entity "skeleton" for the top level hierarchy
-Info (12128): Elaborating entity "freqBy2" for hierarchy "freqBy2:f1" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 28
-Info (12128): Elaborating entity "imem" for hierarchy "imem:my_imem" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 44
+Info (12128): Elaborating entity "clkDiv4" for hierarchy "clkDiv4:comb_3" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 26
+Warning (10230): Verilog HDL assignment warning at clkDiv4.v(16): truncated value with size 3 to match size of target (2) File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/clkDiv4.v Line: 16
+Warning (10230): Verilog HDL assignment warning at clkDiv4.v(30): truncated value with size 32 to match size of target (2) File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/clkDiv4.v Line: 30
+Info (12128): Elaborating entity "freqBy2" for hierarchy "freqBy2:comb_4" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 27
+Info (12128): Elaborating entity "imem" for hierarchy "imem:my_imem" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 47
 Info (12128): Elaborating entity "altsyncram" for hierarchy "imem:my_imem|altsyncram:altsyncram_component" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/imem.v Line: 82
 Info (12130): Elaborated megafunction instantiation "imem:my_imem|altsyncram:altsyncram_component" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/imem.v Line: 82
 Info (12133): Instantiated megafunction "imem:my_imem|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/imem.v Line: 82
     Info (12134): Parameter "address_aclr_a" = "NONE"
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
-    Info (12134): Parameter "init_file" = "imem.mif"
+    Info (12134): Parameter "init_file" = "./mif_outputs/basicTestCases.mif"
     Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
     Info (12134): Parameter "lpm_type" = "altsyncram"
@@ -653,10 +691,10 @@ Info (12133): Instantiated megafunction "imem:my_imem|altsyncram:altsyncram_comp
     Info (12134): Parameter "widthad_a" = "12"
     Info (12134): Parameter "width_a" = "32"
     Info (12134): Parameter "width_byteena_a" = "1"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_m591.tdf
-    Info (12023): Found entity 1: altsyncram_m591 File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/db/altsyncram_m591.tdf Line: 28
-Info (12128): Elaborating entity "altsyncram_m591" for hierarchy "imem:my_imem|altsyncram:altsyncram_component|altsyncram_m591:auto_generated" File: c:/altera_lite/16.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "dmem" for hierarchy "dmem:my_dmem" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 61
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ahb1.tdf
+    Info (12023): Found entity 1: altsyncram_ahb1 File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/db/altsyncram_ahb1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_ahb1" for hierarchy "imem:my_imem|altsyncram:altsyncram_component|altsyncram_ahb1:auto_generated" File: c:/altera_lite/16.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "dmem" for hierarchy "dmem:my_dmem" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 64
 Info (12128): Elaborating entity "altsyncram" for hierarchy "dmem:my_dmem|altsyncram:altsyncram_component" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/dmem.v Line: 86
 Info (12130): Elaborated megafunction instantiation "dmem:my_dmem|altsyncram:altsyncram_component" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/dmem.v Line: 86
 Info (12133): Instantiated megafunction "dmem:my_dmem|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/dmem.v Line: 86
@@ -677,12 +715,12 @@ Info (12133): Instantiated megafunction "dmem:my_dmem|altsyncram:altsyncram_comp
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_0jf1.tdf
     Info (12023): Found entity 1: altsyncram_0jf1 File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/db/altsyncram_0jf1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_0jf1" for hierarchy "dmem:my_dmem|altsyncram:altsyncram_component|altsyncram_0jf1:auto_generated" File: c:/altera_lite/16.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "regfile" for hierarchy "regfile:my_regfile" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 80
-Info (12128): Elaborating entity "processor" for hierarchy "processor:my_processor" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 107
+Info (12128): Elaborating entity "regfile" for hierarchy "regfile:my_regfile" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 84
+Info (12128): Elaborating entity "processor" for hierarchy "processor:my_processor" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/skeleton.v Line: 111
 Warning (10036): Verilog HDL or VHDL warning at processor.v(104): object "neq" assigned a value but never read File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/processor.v Line: 104
 Warning (10036): Verilog HDL or VHDL warning at processor.v(104): object "lt" assigned a value but never read File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/processor.v Line: 104
-Warning (10230): Verilog HDL assignment warning at processor.v(160): truncated value with size 32 to match size of target (12) File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/processor.v Line: 160
-Info (12128): Elaborating entity "alu" for hierarchy "processor:my_processor|alu:alu1" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/processor.v Line: 199
+Warning (10230): Verilog HDL assignment warning at processor.v(154): truncated value with size 32 to match size of target (12) File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/processor.v Line: 154
+Info (12128): Elaborating entity "alu" for hierarchy "processor:my_processor|alu:alu1" File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/processor.v Line: 194
 Warning (10270): Verilog HDL Case Statement warning at alu.v(25): incomplete case statement has no default case item File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/alu.v Line: 25
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "regfile:my_regfile|data_readRegA[31]" feeding internal logic into a wire File: C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/regfile.v Line: 9
@@ -753,16 +791,16 @@ Info (286030): Timing-Driven Synthesis is running
 Info (144001): Generated suppressed messages file C:/Users/Suryansh Jain/Desktop/Duke ECE/Semester 1/ECE 550D/Project Checkpoints/Project Checkpoint 5 with Git/output_files/pc5.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 3308 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3278 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 53 output pins
-    Info (21061): Implemented 3189 logic cells
+    Info (21061): Implemented 3159 logic cells
     Info (21064): Implemented 64 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 72 warnings
-    Info: Peak virtual memory: 4977 megabytes
-    Info: Processing ended: Thu Nov 18 13:35:11 2021
-    Info: Elapsed time: 00:00:23
-    Info: Total CPU time (on all processors): 00:00:37
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 75 warnings
+    Info: Peak virtual memory: 4976 megabytes
+    Info: Processing ended: Fri Nov 19 18:59:59 2021
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:33
 
 
 +------------------------------------------+

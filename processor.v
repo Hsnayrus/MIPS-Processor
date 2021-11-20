@@ -103,20 +103,14 @@ module processor(
 	 wire is_rType, is_addi, is_sw, is_lw, is_ovf, isNotEqual, isLessThan, overflow, is_add, is_sub, is_jiType, rstatus1, pcReset;
 	 wire is_j, is_bne, is_jal, is_jr, is_blt, is_bex, is_setx, neq, lt;
 	 
-	 
-	 
 	 reg[31:0] addressImemReg;
 
-	 always @(posedge imemClock)begin
-		addressImemReg <= q_imem + jump;
+	 always @(posedge clock)begin
+		addressImemReg <= jump;
 	 end
 	
 	 assign addressImem = addressImemReg;
-	 assign address_imem = addressImem[11:0];
-	 
-	 
-	 
-	 
+
 	 assign is_rType  = ~Opcode[4] && ~Opcode[3] && ~Opcode[2] && ~Opcode[1] && ~Opcode[0]; //00000
 	 assign is_addi   = ~Opcode[4] && ~Opcode[3] && Opcode[2]  && ~Opcode[1] && Opcode[0];  //00101
 	 assign is_sw     = ~Opcode[4] && ~Opcode[3] && Opcode[2]  && Opcode[1]  && Opcode[0];  //00111
@@ -139,7 +133,7 @@ module processor(
 	 // Name ambiguous because it doesn't include setx, but we are not using setx to update any pc, which is what this signal is for.
 	 
 	 //rstatus != 0;
-	 assign rstatus1 = ~(data_readRegA == 1'd0);
+	 assign rstatus1 = ~(data_readRegA == 32'd0);
 	 
 	 assign neq = is_bne && ( data_readRegA != data_readRegB);
 	 assign lt = is_blt && (data_readRegA < data_readRegB);
@@ -157,8 +151,9 @@ module processor(
 	 
 	 
 //	 pc pc1(q_imem, pcReset, imemClock, addressImem)
-	 assign jump = is_jiType ? q_imem : (is_jr ? data_readRegA : (is_blt || is_bne ? signExtended : (addressImem + 1'b1)));
-	 
+	 assign jump = is_jiType ? q_imem: (is_jr ? data_readRegA : (is_blt || is_bne ? signExtended : (1'b1+ address_imem)));
+//	assign jump = is_jiType ? q_imem : address_imem + 1'b1;
+	 assign address_imem = addressImem[11:0];	 
 	 
 	 //New
 //	 assign address_imem = is_jiType ? ((is_bex ? (rstatus1 ? address_imem[11:0] : q_imem[11:0]) : q_imem[11:0])) : addressImem[11:0];
@@ -181,7 +176,7 @@ module processor(
 	 
 //assign ctrl_readRegB = (is_sw)  ? rd : rt;
 	
-	 assign ctrl_writeEnable  = is_sw  ? 1'b0 : 1'b1;
+	 assign ctrl_writeEnable  = clock  ? 1'b0 : 1'b1;
 	 //Should be q_dmem instead of q_imem
 	 //Last case q_imem is not q_imem[26:0] because we are guaranteed that the first 5 bits are never gonna be used;
 	 assign data_writeReg     = (is_rType || is_addi) ? (overflow ? (is_add ? 32'd1 : (is_sub ? 32'd3 : (is_addi ? 32'd2 : aluOutput))) : aluOutput) : (is_lw ? q_dmem : (is_jal ? addressImem : (is_setx ? q_imem : 32'd0)));

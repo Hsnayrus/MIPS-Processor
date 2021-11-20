@@ -19,15 +19,18 @@ module skeleton(clock, reset, imem_clock, dmem_clock, processor_clock, regfile_c
         based on proper functioning with this clock.
     */
     output imem_clock, dmem_clock, processor_clock, regfile_clock;
-	 wire imemfake;
+	 wire imemfake, clk4, clk2;
 	 output[31:0] dataWriteReg;
 	 
  //Clocks assigned here
-	 assign regfile_clock = clock;
-	 assign processor_clock = clock;
-	 freqBy2 f1(clock, 1'b1, imem_clock);
-	 assign imemFake = imem_clock;
-	 freqBy2 f2(imemFake, 1'b1, dmem_clock);
+ clkDiv4(clock, reset, clk4);
+ freqBy2(clock, reset, clk2);
+ assign processor_clock = clk4;
+ assign dmem_clock = clk2;
+ assign imem_clock = clock;
+ 
+ assign regfile_clock = processor_clock;
+ 
 //To here	
 	
     /** IMEM **/
@@ -63,6 +66,7 @@ module skeleton(clock, reset, imem_clock, dmem_clock, processor_clock, regfile_c
     /** REGFILE **/
     // Instantiate your regfile
     wire ctrl_writeEnable;
+	
     wire [4:0] ctrl_writeReg, ctrl_readRegA, ctrl_readRegB;
     wire [31:0] data_writeReg;
     wire [31:0] data_readRegA, data_readRegB;
