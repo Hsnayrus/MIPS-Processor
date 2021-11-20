@@ -1,3 +1,5 @@
+nop
+nop
 addi $1, $0, 1
 j 5
 addi $1, $1, 1
